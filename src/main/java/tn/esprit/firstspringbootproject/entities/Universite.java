@@ -1,7 +1,5 @@
 package tn.esprit.firstspringbootproject.entities;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -23,7 +22,9 @@ public class Universite implements Serializable {
 
     private String adress;
 
-    
+    @OneToOne
+    private Foyer foyer ;
+
 
 
 

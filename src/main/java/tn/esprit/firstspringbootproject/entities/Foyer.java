@@ -1,7 +1,5 @@
 package tn.esprit.firstspringbootproject.entities;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -22,6 +21,12 @@ public class Foyer implements Serializable {
     private String nomFoyer;
 
     private long capaciteFoyer;
+
+    @OneToOne (mappedBy = "foyer")
+    private Universite universite;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "foyer")
+    private Set<Bloc> Blocs;
+
 
 
 

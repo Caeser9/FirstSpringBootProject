@@ -1,8 +1,5 @@
 package tn.esprit.firstspringbootproject.entities;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -23,6 +21,10 @@ public class Chambre implements Serializable {
     private long numChambre;
     @Enumerated(EnumType.STRING)
     private ChambreType chambreType;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "chambre")
+    private Set<Bloc> Blocs;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Reservation> reservations ;
 
 
 
