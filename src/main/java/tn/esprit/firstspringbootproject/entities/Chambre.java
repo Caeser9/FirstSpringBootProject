@@ -17,6 +17,8 @@ import java.util.Set;
 public class Chambre implements Serializable {
     @Id
     private long idChambre;
+    @Enumerated(EnumType.STRING)
+    private ChambreType typeC;
 
     private long numChambre;
     @Enumerated(EnumType.STRING)
