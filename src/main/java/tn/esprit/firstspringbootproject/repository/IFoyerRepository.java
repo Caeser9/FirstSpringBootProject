@@ -9,7 +9,5 @@ import java.util.List;
 
 @Repository
 public interface IFoyerRepository extends JpaRepository<Foyer, Long> {
-    public List<Foyer> findByCapaciteFoyerBetween(Long CapFoyer);
-    public List<Foyer> getFoyerByNomFoyer(Long GetNomFoyer);
 
 }

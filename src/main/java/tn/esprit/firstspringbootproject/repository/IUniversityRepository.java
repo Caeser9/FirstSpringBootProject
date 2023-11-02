@@ -9,5 +9,4 @@ import java.util.List;
 
 @Repository
 public interface IUniversityRepository extends JpaRepository<Universite,Long> {
-    public List<Universite> findUniversiteByIdUnivserciteBetween(Long IdUniv);
 }
