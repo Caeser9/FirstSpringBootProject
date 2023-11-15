@@ -3,6 +3,7 @@ package tn.esprit.firstspringbootproject.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.firstspringbootproject.entities.Bloc;
 import tn.esprit.firstspringbootproject.entities.Chambre;
 import tn.esprit.firstspringbootproject.services.IChambreService;
 
@@ -18,6 +19,10 @@ public class ChambreController {
     @PostMapping("/addChambre")
     public Chambre addChambre(@RequestBody Chambre c) {
         return chambreService.addChambre(c);
+    }
+    @PostMapping("/affectation/{idBloc}")
+    public Bloc affectBlocChambre(@RequestBody List <Long>Cid , @PathVariable("idBloc") Long Bid ){
+        return chambreService.affectBlocChambre(Cid,Bid);
     }
 
     @GetMapping("/retrieveAllChambres")

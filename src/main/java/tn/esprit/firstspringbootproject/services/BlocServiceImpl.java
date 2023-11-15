@@ -2,7 +2,10 @@ package tn.esprit.firstspringbootproject.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.firstspringbootproject.entities.Bloc;
+import tn.esprit.firstspringbootproject.entities.Chambre;
+import tn.esprit.firstspringbootproject.entities.ChambreType;
 import tn.esprit.firstspringbootproject.repository.IBlocRepository;
+import tn.esprit.firstspringbootproject.repository.IChambreRepository;
 import tn.esprit.firstspringbootproject.services.IBlocService;
 
 import java.util.List;
@@ -11,6 +14,8 @@ import java.util.List;
 public class BlocServiceImpl implements IBlocService {
     @Autowired
     IBlocRepository iBlocRepository;
+    @Autowired
+    IChambreRepository iChambreRepository;
 
 
     public BlocServiceImpl(IBlocRepository iBlocRepository) {
@@ -41,4 +46,7 @@ public class BlocServiceImpl implements IBlocService {
     public Bloc modifyBlocs(Bloc bloc) {
         return iBlocRepository.save(bloc);
     }
+
+
+
 }

@@ -20,7 +20,10 @@ public class UniversiteController {
         public Universite addUniversite(@RequestBody Universite u) {
             return universityService.addUniversite(u);
         }
-
+         @PostMapping("/affectation/{idFoyer}/{idUnivsercite}")
+            public Universite affectUniversiteFoyer(@PathVariable("idFoyer") Long Fid , @PathVariable("idUnivsercite") Long Uid ){
+            return universityService.affectUniversiteFoyer(Fid, Uid);
+        }
         @GetMapping("/retrieveAllUniversite")
         public List<Universite> getUniversite() {
             return universityService.retrieveAllUniversite();
@@ -30,4 +33,5 @@ public class UniversiteController {
         public void SupprimerUniversite(@PathVariable("numU") Long numU) {
             universityService.removeUniversite(numU);
         }
+
 }

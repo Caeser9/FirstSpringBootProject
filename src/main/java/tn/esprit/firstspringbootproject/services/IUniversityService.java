@@ -3,6 +3,7 @@ package tn.esprit.firstspringbootproject.services;
 import tn.esprit.firstspringbootproject.entities.Universite;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IUniversityService {
     public List<Universite> retrieveAllUniversite();
@@ -10,4 +11,6 @@ public interface IUniversityService {
     public Universite addUniversite(Universite u);
     public void removeUniversite(Long universiteId);
     public Universite modifyUniversite(Universite universite);
+    public Universite affectUniversiteFoyer(Long foyerId, Long universiteId);
+
 }

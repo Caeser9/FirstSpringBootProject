@@ -24,7 +24,7 @@ public class Chambre implements Serializable {
     @Enumerated(EnumType.STRING)
     private ChambreType chambreType;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "chambre")
-    private Set<Bloc> Blocs;
+    private Set<Bloc> blocs;
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Reservation> reservations ;
 

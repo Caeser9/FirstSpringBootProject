@@ -23,6 +23,10 @@ public class FoyerController {
     public List<Foyer> getFoyers() {
         return foyerService.retrieveAllFoyer();
     }
+    @GetMapping("/retrieveFoyer/{idFoyer}")
+    public Foyer getOneFoyers(@PathVariable ("idFoyer") long Fid) {
+        return foyerService.retrieveFoyer(Fid);
+    }
 
     @DeleteMapping("/DeleteFoyer/{numF}")
     public void removeFoyer (@PathVariable("numF") Long numF) {

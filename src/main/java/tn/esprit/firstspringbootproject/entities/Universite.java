@@ -24,9 +24,4 @@ public class Universite implements Serializable {
 
     @OneToOne
     private Foyer foyer ;
-
-
-
-
-
 }
