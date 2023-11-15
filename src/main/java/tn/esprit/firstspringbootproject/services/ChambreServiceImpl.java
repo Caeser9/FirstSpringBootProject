@@ -4,20 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.firstspringbootproject.entities.Bloc;
 import tn.esprit.firstspringbootproject.entities.Chambre;
-import tn.esprit.firstspringbootproject.entities.ChambreType;
 import tn.esprit.firstspringbootproject.repository.IBlocRepository;
 import tn.esprit.firstspringbootproject.repository.IChambreRepository;
 
 import java.util.List;
-import java.util.Set;
-
 @Service
+public class ChambreServiceImpl implements IChambreService{
+    @Autowired
+    IChambreRepository iChambreRepository ;
+    @Autowired
+    IBlocRepository iblocRepo;
 
-public class ChambreServiceImpl implements IChambreService {
-    @Autowired
-    IChambreRepository iChambreRepository;
-    @Autowired
-    IBlocRepository iBlocRepository;
+
     @Override
     public List<Chambre> retrieveAllChambres() {
         return iChambreRepository.findAll();
@@ -25,13 +23,11 @@ public class ChambreServiceImpl implements IChambreService {
 
     @Override
     public Chambre retrieveChambre(Long chambreId) {
-
         return iChambreRepository.findById(chambreId).get();
     }
 
     @Override
     public Chambre addChambre(Chambre c) {
-
         return iChambreRepository.save(c);
     }
 
@@ -43,26 +39,16 @@ public class ChambreServiceImpl implements IChambreService {
 
     @Override
     public Chambre modifyChambre(Chambre chambre) {
-
-        return iChambreRepository.save(chambre) ;
+        return iChambreRepository.save(chambre);
     }
 
     @Override
-    public Bloc affectBlocChambre(List<Long> idChambre, long idBloc) {
-        Bloc bloc = iBlocRepository.findById(idBloc).get();
-        for (Long id:idChambre){
+    public Bloc affectBlocChambre(List<Long> idChambres, long idBloc) {
+        Bloc bloc = iblocRepo.findById(idBloc).get();
+        for(Long id:idChambres){
             Chambre c = iChambreRepository.findById(id).get();
-            c.setBlocs((Set<Bloc>) bloc);
+            c.setBloc(bloc);
         }
         return bloc;
-    }
-    @Override
-    public List<Chambre> getChambresParBlocEtType(long idBloc, ChambreType typeC) {
-        Bloc b = iBlocRepository.findById(idBloc).get();
-        List<Chambre> chambres = b.getChambre() ;
-
-        for (int i=1; i<b.getChambre().){
-
-        }
     }
 }

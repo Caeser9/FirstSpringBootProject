@@ -1,33 +1,30 @@
 package tn.esprit.firstspringbootproject.entities;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
-import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class Chambre implements Serializable {
+@NoArgsConstructor
+
+public class Chambre {
     @Id
-    private long idChambre;
-    @Enumerated(EnumType.STRING)
-    private ChambreType typeC;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idChambre;
 
-    private long numChambre;
+    private Long numeroChambre;
+
     @Enumerated(EnumType.STRING)
-    private ChambreType chambreType;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "chambre")
-    private Set<Bloc> blocs;
+    private ChamberType typeC;
+
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<Reservation> reservations ;
-
+    private Set<Reservation> reservations;
+    @ManyToOne
+    private Bloc bloc;
 
 
 }

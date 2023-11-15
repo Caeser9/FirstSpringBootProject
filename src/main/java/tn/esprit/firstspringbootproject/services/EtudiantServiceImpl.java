@@ -7,12 +7,12 @@ import tn.esprit.firstspringbootproject.repository.IEtudiantRepository;
 
 import java.util.List;
 @Service
-public class EtudiantServiceImpl implements IEtudiantService{
+public class EtudiantServiceImpl implements IEtudiant{
     @Autowired
-    IEtudiantRepository iEtudiantRepository;
+    IEtudiantRepository iEtudiantRepository ;
     @Override
-    public List<Etudiant> retrieveAllEtudiants() {
-        return iEtudiantRepository.findAll();
+    public List<Etudiant> retrieveAllEtudiant() {
+        return iEtudiantRepository.findAll() ;
     }
 
     @Override
@@ -28,7 +28,6 @@ public class EtudiantServiceImpl implements IEtudiantService{
     @Override
     public void removeEtudiant(Long etudiantId) {
         iEtudiantRepository.deleteById(etudiantId);
-
     }
 
     @Override

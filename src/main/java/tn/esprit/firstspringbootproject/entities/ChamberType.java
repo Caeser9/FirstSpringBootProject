@@ -1,5 +1,5 @@
 package tn.esprit.firstspringbootproject.entities;
 
-public enum ChambreType {
-    SIMPLE,DOUBLE,TRIPLE
+public enum ChamberType {
+    SIMPLE ,DOUBLE, TRIPLE
 }

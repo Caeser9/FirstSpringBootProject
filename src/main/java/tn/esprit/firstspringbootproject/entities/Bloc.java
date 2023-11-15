@@ -1,32 +1,27 @@
 package tn.esprit.firstspringbootproject.entities;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.List;
 
-import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Bloc implements Serializable {
+public class Bloc {
     @Id
-    private long idBloc;
-
-    private String nomBloc;
-
-    private long capaciteBloc;
+    private long idBloc ;
+    private String nomBloc ;
+    private long capaciteBloc ;
     @ManyToOne
-    Foyer foyer ;
-    @ManyToOne
-    Chambre chambre;
-
-
+    private Foyer foyer;
+    @OneToMany (mappedBy = "bloc",cascade = CascadeType.ALL)
+    private List<Chambre> chambers;
 
 }

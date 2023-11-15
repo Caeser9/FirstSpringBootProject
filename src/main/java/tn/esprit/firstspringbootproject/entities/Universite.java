@@ -1,27 +1,25 @@
 package tn.esprit.firstspringbootproject.entities;
-import jakarta.persistence.*;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.NoArgsConstructor;
-
-
-import java.io.Serializable;
-import java.util.Set;
+import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Universite implements Serializable {
+public class Universite {
     @Id
-    private long idUnivsercite;
+    private long idUniversite ;
+    private String nomUniversite ;
+    private String adresse ;
+    @OneToOne (mappedBy = "universite",cascade = CascadeType.ALL)
+    private Foyer foyer;
 
-    private String nomUniversite;
-
-    private String adress;
-
-    @OneToOne
-    private Foyer foyer ;
 }

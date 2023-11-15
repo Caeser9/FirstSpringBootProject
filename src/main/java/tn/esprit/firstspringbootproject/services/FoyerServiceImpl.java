@@ -7,33 +7,31 @@ import tn.esprit.firstspringbootproject.repository.IFoyerRepository;
 
 import java.util.List;
 @Service
-public class FoyerServiceImpl implements IFoyerService{
+public class FoyerServiceImpl implements IFoyer{
     @Autowired
-    IFoyerRepository iFoyerRepository;
-
+    IFoyerRepository FoyerRepository ;
     @Override
-    public List<Foyer> retrieveAllFoyer() {
-        return iFoyerRepository.findAll();
+    public List<Foyer> retrieveAllFoyers() {
+        return FoyerRepository.findAll();
     }
 
     @Override
-    public Foyer retrieveFoyer(Long foyerId) {
-        return iFoyerRepository.findById(foyerId).get();
+    public Foyer retrieveFoyer(Long FoyerId) {
+        return FoyerRepository.findById(FoyerId).get();
     }
 
     @Override
-    public Foyer addFoyer(Foyer f) {
-        return iFoyerRepository.save(f);
+    public Foyer addFoyer(Foyer F) {
+        return FoyerRepository.save(F);
     }
 
     @Override
-    public void removeFoyer(Long foyerId) {
-        iFoyerRepository.deleteById(foyerId);
-
+    public void removeFoyer(Long FoyerId) {
+        FoyerRepository.deleteById(FoyerId);
     }
 
     @Override
-    public Foyer modifyEtudiant(Foyer foyer) {
-        return iFoyerRepository.save(foyer);
+    public Foyer modifyFoyer(Foyer foyer) {
+        return FoyerRepository.save(foyer);
     }
 }

@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -14,16 +14,17 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Etudiant {
+public class Chamber implements Serializable {
     @Id
-    private long idEtudiant ;
-    private String nomEt ;
-    private String prenomEt ;
-    private long cin ;
-    private String ecole ;
-    @Temporal(TemporalType.DATE)
-    private Date dateNaissance ;
-    @ManyToMany
+    private long idChambre ;
+    private int numchambres ;
+    @Enumerated(EnumType.STRING)
+    private ChamberType chambretype ;
+
+    @OneToMany (cascade = CascadeType.ALL)
     private List<Reservation> reservations ;
+    @ManyToOne
+    private Bloc bloc;
+
 
 }

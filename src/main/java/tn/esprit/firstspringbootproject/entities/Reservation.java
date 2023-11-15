@@ -1,30 +1,25 @@
 package tn.esprit.firstspringbootproject.entities;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import lombok.*;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reservation implements Serializable {
+public class Reservation {
     @Id
-    private long idReservation;
-
-    private Date anneUniversitaire;
-
-    private boolean estValide;
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Etudiant> etudiants;
-
-
-
+    private long idReservation ;
+    @Temporal(TemporalType.DATE)
+    private Date anneeUniversitaire ;
+    private boolean estValide ;
+    @ManyToMany (mappedBy ="reservations", cascade = CascadeType.ALL)
+    private List<Etudiant> etudiants ;
 }
