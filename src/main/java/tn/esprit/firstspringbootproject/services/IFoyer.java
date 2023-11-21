@@ -11,4 +11,5 @@ public interface IFoyer {
     public Foyer addFoyer(Foyer F);
     public void removeFoyer(Long FoyerId);
     public Foyer modifyFoyer(Foyer foyer);
+
 }

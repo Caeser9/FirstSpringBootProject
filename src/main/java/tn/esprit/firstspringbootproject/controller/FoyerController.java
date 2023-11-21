@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.firstspringbootproject.entities.Foyer;
 import tn.esprit.firstspringbootproject.services.IFoyer;
+import tn.esprit.firstspringbootproject.services.IUniversity;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
 public class FoyerController {
     @Autowired
     IFoyer FoyerService ;
+    IUniversity universiteService;
 
     @PostMapping("/addfoyer")
     public Foyer addFoyer(@RequestBody Foyer F){
@@ -36,4 +38,11 @@ public class FoyerController {
         Foyer foyer = FoyerService.modifyFoyer(F);
         return foyer;
     }
+    @PostMapping("/ajouter-effectuerFoyerUniversite/{universite-id}")
+    public Foyer ajouterFoyerEtAffecterAUniversite( @RequestBody Foyer f,
+                                                    @PathVariable("universite-id") Long Uid)
+    {
+        return  universiteService.ajouterFoyerEtAffecterAUniversite(f,Uid);
+    }
+
 }

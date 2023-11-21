@@ -34,4 +34,7 @@ public class FoyerServiceImpl implements IFoyer{
     public Foyer modifyFoyer(Foyer foyer) {
         return FoyerRepository.save(foyer);
     }
+
+
+
 }

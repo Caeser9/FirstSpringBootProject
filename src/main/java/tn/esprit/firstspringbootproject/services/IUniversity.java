@@ -13,6 +13,6 @@ public interface IUniversity {
     public Universite addUniversite(Universite U);
     public void removeUniversite(Long universiteId);
     public Universite modifyUniversite(Universite universite);
-    public Universite affectFoyerUniversite(long idFoyer , long idUniversite);
+    public Foyer affectFoyerUniversite(long idFoyer , long idUniversite);
     public Foyer ajouterFoyerEtAffecterAUniversite (Foyer foyer, long idUniversite) ;
 }

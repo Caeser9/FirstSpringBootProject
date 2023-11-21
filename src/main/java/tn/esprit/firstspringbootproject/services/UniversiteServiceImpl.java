@@ -43,11 +43,11 @@ public class UniversiteServiceImpl implements IUniversity{
     }
 
     @Override
-    public Universite affectFoyerUniversite(long idFoyer, long idUniversite) {
+    public Foyer affectFoyerUniversite(long idFoyer, long idUniversite) {
         Foyer foyer =FoyerRepo.findById(idFoyer).get() ;
         Universite universite = UniversiteRpo.findById(idUniversite).get();
-        universite.setFoyer(foyer);
-        return (universite);
+        foyer.setUniversite(universite);
+        return foyer;
     }
 
     @Override

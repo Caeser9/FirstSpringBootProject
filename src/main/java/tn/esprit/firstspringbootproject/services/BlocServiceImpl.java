@@ -1,6 +1,9 @@
 package tn.esprit.firstspringbootproject.services;
 
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.firstspringbootproject.entities.Bloc;
 import tn.esprit.firstspringbootproject.entities.ChamberType;
@@ -8,16 +11,30 @@ import tn.esprit.firstspringbootproject.entities.Chambre;
 import tn.esprit.firstspringbootproject.repository.IBlocRepository;
 import tn.esprit.firstspringbootproject.repository.IChambreRepository;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
+@Slf4j
+@ToString
 @Service
 public class BlocServiceImpl implements IBloc{
     @Autowired
     IBlocRepository iBlocRepository ;
 
+
+    //@Scheduled(cron="* 1 * * * *")
+    @Scheduled(fixedRate = 60000)
     @Override
     public List<Bloc> retrieveAllBlocs() {
-        return iBlocRepository.findAll();
+        //return iBlocRepository.findAll();
+        List<Bloc> blocList=iBlocRepository.findAll();
+
+        for (Bloc b : blocList){
+            log.info("Bloc: "+b +"TEST");
+        }
+        return blocList;
     }
 
     @Override

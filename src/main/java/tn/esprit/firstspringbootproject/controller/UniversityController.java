@@ -2,6 +2,7 @@ package tn.esprit.firstspringbootproject.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.firstspringbootproject.entities.Foyer;
 import tn.esprit.firstspringbootproject.entities.Universite;
 import tn.esprit.firstspringbootproject.services.IUniversity;
 
@@ -20,14 +21,12 @@ public class UniversityController {
 
     @GetMapping("/retrieve-all-universites")
     public List<Universite> getUniversites() {
-        List<Universite> listUniversites = UniversityService.retrieveAllUniversites();
-        return listUniversites;
+        return UniversityService.retrieveAllUniversites();
     }
 
     @GetMapping("/retrieve-universite/{universite-id}")
     public Universite retrieveReservation(@PathVariable("universite-id") Long UId) {
-        Universite universite = UniversityService.retrieveUniversite(UId);
-        return universite;
+        return UniversityService.retrieveUniversite(UId);
     }
     @DeleteMapping("/remove-universite/{universite-id}")
     public void removeUniversite(@PathVariable("universite-id") Long UId) {
@@ -35,15 +34,12 @@ public class UniversityController {
     }
     @PutMapping("/modify-universite")
     public Universite modifyReservation(@RequestBody Universite U) {
-        Universite universite = UniversityService.modifyUniversite(U);
-        return universite;
+        return UniversityService.modifyUniversite(U);
     }
 
     @PostMapping("/affect-foyer-universite/{Foyer-id}/{universite-id}")
-    public Universite affectFoyerUniversite(@PathVariable("Foyer-id") Long Fid,
-                                            @PathVariable("universite-id") Long Uid) {
-        Universite universite = UniversityService.affectFoyerUniversite(Fid, Uid);
-        return universite;
+    public Foyer affectFoyerUniversite(@PathVariable("Foyer-id") Long Fid,
+                                       @PathVariable("universite-id") Long Uid) {
+        return UniversityService.affectFoyerUniversite(Fid, Uid);
     }
-
 }

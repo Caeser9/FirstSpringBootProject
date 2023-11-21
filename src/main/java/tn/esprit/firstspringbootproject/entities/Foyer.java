@@ -22,6 +22,4 @@ public class Foyer {
     private List<Bloc> blocs;
     @OneToOne
     private Universite universite;
-
-
 }
