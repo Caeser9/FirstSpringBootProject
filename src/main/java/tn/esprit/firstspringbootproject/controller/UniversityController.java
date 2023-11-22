@@ -42,4 +42,11 @@ public class UniversityController {
                                        @PathVariable("universite-id") Long Uid) {
         return UniversityService.affectFoyerUniversite(Fid, Uid);
     }
+
+    @PostMapping("/ajouter-effectuerFoyerUniversite/{universite-id}")
+    public Foyer ajouterFoyerEtAffecterAUniversite( @RequestBody Foyer f,
+                                                    @PathVariable("universite-id") Long Uid){
+        return  UniversityService.ajouterFoyerEtAffecterAUniversite(f,Uid);
+    }
+
 }

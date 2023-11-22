@@ -1,5 +1,7 @@
 package tn.esprit.firstspringbootproject.services;
 
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.firstspringbootproject.entities.Bloc;
@@ -14,47 +16,56 @@ import java.util.List;
 @Service
 public class UniversiteServiceImpl implements IUniversity{
     @Autowired
-    IUniversityRepository UniversiteRpo ;
+    IUniversityRepository UniversiteRepo ;
     @Autowired
     IFoyerRepository FoyerRepo ;
     @Override
     public List<Universite> retrieveAllUniversites() {
-        return UniversiteRpo.findAll();
+        return UniversiteRepo.findAll();
     }
 
     @Override
     public Universite retrieveUniversite(Long UniversiteId) {
-        return UniversiteRpo.findById(UniversiteId).get();
+        return UniversiteRepo.findById(UniversiteId).get();
     }
 
     @Override
     public Universite addUniversite(Universite U) {
-        return UniversiteRpo.save(U);
+        return UniversiteRepo.save(U);
     }
 
     @Override
     public void removeUniversite(Long universiteId) {
-        UniversiteRpo.deleteById(universiteId);
+        UniversiteRepo.deleteById(universiteId);
     }
 
     @Override
     public Universite modifyUniversite(Universite universite) {
-        return UniversiteRpo.save(universite);
+        return UniversiteRepo.save(universite);
     }
 
-    @Override
-    public Foyer affectFoyerUniversite(long idFoyer, long idUniversite) {
-        Foyer foyer =FoyerRepo.findById(idFoyer).get() ;
-        Universite universite = UniversiteRpo.findById(idUniversite).get();
-        foyer.setUniversite(universite);
-        return foyer;
-    }
-
+//    @Override
+//    public Foyer affectFoyerUniversite(long idFoyer, long idUniversite) {
+//        Foyer foyer =FoyerRepo.findById(idFoyer).get() ;
+//        Universite universite = UniversiteRpo.findById(idUniversite).get();
+//        foyer.setUniversite(universite);
+//        return foyer;
+//    }
+@Override
+public Foyer affectFoyerUniversite(long idFoyer, long idUniversite) {
+    Foyer foyer = FoyerRepo.findById(idFoyer).get();
+    Universite universite = UniversiteRepo.findById(idUniversite).get();
+    foyer.setUniversite(universite);
+    return foyer;
+}
+    @Transactional
     @Override
     public Foyer ajouterFoyerEtAffecterAUniversite(Foyer foyer, long idUniversite) {
-        Universite universite = UniversiteRpo.findById(idUniversite).get();
-        universite.setFoyer(foyer);
-        return foyer ;
+        Universite universite = UniversiteRepo.findById(idUniversite).get();
+
+        foyer.setUniversite(universite);
+        // Save the Foyer entity to the database if it's not already persisted
+        return FoyerRepo.save(foyer);
     }
 
 

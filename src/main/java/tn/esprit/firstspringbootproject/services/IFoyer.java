@@ -12,4 +12,7 @@ public interface IFoyer {
     public void removeFoyer(Long FoyerId);
     public Foyer modifyFoyer(Foyer foyer);
 
+
+
+
 }

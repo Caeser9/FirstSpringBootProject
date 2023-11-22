@@ -25,16 +25,15 @@ public class BlocServiceImpl implements IBloc{
 
 
     //@Scheduled(cron="* 1 * * * *")
-    @Scheduled(fixedRate = 60000)
+    //@Scheduled(fixedRate = 60000)
     @Override
     public List<Bloc> retrieveAllBlocs() {
-        //return iBlocRepository.findAll();
-        List<Bloc> blocList=iBlocRepository.findAll();
-
-        for (Bloc b : blocList){
+        return iBlocRepository.findAll();
+       // List<Bloc> blocList=iBlocRepository.findAll();
+        /*for (Bloc b : blocList){
             log.info("Bloc: "+b +"TEST");
         }
-        return blocList;
+        return blocList;*/
     }
 
     @Override

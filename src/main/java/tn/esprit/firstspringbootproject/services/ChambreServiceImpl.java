@@ -1,5 +1,6 @@
 package tn.esprit.firstspringbootproject.services;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.firstspringbootproject.entities.Bloc;
@@ -42,6 +43,7 @@ public class ChambreServiceImpl implements IChambreService{
         return iChambreRepository.save(chambre);
     }
 
+    @Transactional
     @Override
     public Bloc affectBlocChambre(List<Long> idChambres, long idBloc) {
         Bloc bloc = iblocRepo.findById(idBloc).get();
