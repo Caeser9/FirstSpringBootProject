@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.firstspringbootproject.entities.Bloc;
+import tn.esprit.firstspringbootproject.entities.ChamberType;
 import tn.esprit.firstspringbootproject.entities.Chambre;
 import tn.esprit.firstspringbootproject.repository.IBlocRepository;
 import tn.esprit.firstspringbootproject.repository.IChambreRepository;
@@ -52,5 +53,20 @@ public class ChambreServiceImpl implements IChambreService{
             c.setBloc(bloc);
         }
         return bloc;
+    }
+
+    @Override
+    public List<Chambre> findNomUniversite(String nomUniversite) {
+        return iChambreRepository.findChambreByBlocFoyerUniversiteNomUniversite(nomUniversite);
+    }
+
+    @Override
+    public List<Chambre> findByBlocIdBlocAndTypeChambre(long idBloc, ChamberType typeChambre) {
+        return iChambreRepository.findByBlocIdBlocAndTypeChambreJPQL(idBloc,typeChambre);
+    }
+
+    @Override
+    public List<Chambre> findByBlocIdBlocAndTypeChambre2(long idBloc, ChamberType typeChambre) {
+        return iChambreRepository.findChambreByBlocIdBlocAndTypeC(idBloc, typeChambre);
     }
 }

@@ -11,4 +11,6 @@ public interface IReservation {
     public Reservation addReservation(Reservation R);
     public void removeReservation(Long reservationId);
     public Reservation modifyReservation(Reservation reservation);
+    Reservation FindReservation(long idBloc);
+    List<Reservation> findByAnnUniv_YearAndNomUniv(int anneeUniversitaire, String nomUniversite);
 }

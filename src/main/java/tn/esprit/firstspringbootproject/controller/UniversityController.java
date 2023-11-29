@@ -2,9 +2,11 @@ package tn.esprit.firstspringbootproject.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.firstspringbootproject.entities.Bloc;
 import tn.esprit.firstspringbootproject.entities.Foyer;
 import tn.esprit.firstspringbootproject.entities.Universite;
 import tn.esprit.firstspringbootproject.services.IUniversity;
+import tn.esprit.firstspringbootproject.services.UniversiteServiceImpl;
 
 import java.util.List;
 
@@ -48,5 +50,6 @@ public class UniversityController {
                                                     @PathVariable("universite-id") Long Uid){
         return  UniversityService.ajouterFoyerEtAffecterAUniversite(f,Uid);
     }
+
 
 }

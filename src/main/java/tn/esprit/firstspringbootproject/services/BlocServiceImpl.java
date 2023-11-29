@@ -67,6 +67,12 @@ public class BlocServiceImpl implements IBloc{
         }
     return chambres ;
     }
+    @Override
+    public List<Bloc> findIdUniv(Long idUniversite) {
+        return iBlocRepository.findBlocByFoyerUniversiteIdUniversite(idUniversite);
+    }
+
+
 
 
 }

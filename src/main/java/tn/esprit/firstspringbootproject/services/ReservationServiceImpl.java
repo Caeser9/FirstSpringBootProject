@@ -37,4 +37,14 @@ public class ReservationServiceImpl implements IReservation {
     public Reservation modifyReservation(Reservation reservation) {
         return iReservationRepository.save(reservation);
     }
+
+    @Override
+    public Reservation FindReservation(long idBloc) {
+        return iReservationRepository.findForReservation(idBloc);
+    }
+
+    @Override
+    public List<Reservation> findByAnnUniv_YearAndNomUniv(int anneeUniversitaire, String nomUniversite) {
+        return iReservationRepository.findByAnneeUniversitaire_YearAndNomUnuiversite(anneeUniversitaire,nomUniversite);
+    }
 }

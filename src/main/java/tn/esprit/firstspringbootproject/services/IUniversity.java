@@ -1,9 +1,6 @@
 package tn.esprit.firstspringbootproject.services;
 
-import tn.esprit.firstspringbootproject.entities.Chambre;
-import tn.esprit.firstspringbootproject.entities.Foyer;
-import tn.esprit.firstspringbootproject.entities.Reservation;
-import tn.esprit.firstspringbootproject.entities.Universite;
+import tn.esprit.firstspringbootproject.entities.*;
 
 import java.util.List;
 
@@ -15,4 +12,5 @@ public interface IUniversity {
     public Universite modifyUniversite(Universite universite);
     public Foyer affectFoyerUniversite(long idFoyer , long idUniversite);
     public Foyer ajouterFoyerEtAffecterAUniversite (Foyer foyer, long idUniversite) ;
+
 }

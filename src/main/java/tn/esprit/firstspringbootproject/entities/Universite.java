@@ -21,5 +21,4 @@ public class Universite {
     private String adresse ;
     @OneToOne (mappedBy = "universite",cascade = CascadeType.ALL)
     private Foyer foyer;
-
 }

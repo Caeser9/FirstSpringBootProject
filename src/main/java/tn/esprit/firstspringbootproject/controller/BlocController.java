@@ -7,6 +7,7 @@ import tn.esprit.firstspringbootproject.entities.Chambre;
 import tn.esprit.firstspringbootproject.services.IBloc;
 import tn.esprit.firstspringbootproject.services.IChambreService;
 import tn.esprit.firstspringbootproject.services.IBloc;
+import tn.esprit.firstspringbootproject.services.UniversiteServiceImpl;
 
 import java.util.List;
 
@@ -40,6 +41,9 @@ public class BlocController {
         Bloc bloc = blocService.modifyBloc(b);
         return bloc;
     }
-
+    @GetMapping("/blockByIdUniv/{idUniv}")
+    public List<Bloc> getByIdUniv(@PathVariable ("idUniv") Long Uid) {
+        return blocService.findIdUniv(Uid);
+    }
 
 }
