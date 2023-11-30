@@ -62,5 +62,10 @@ public class ChambreController {
                                              @PathVariable("typeC")ChamberType Tc){
         return chambreService.findByBlocIdBlocAndTypeChambre2(Bid,Tc);
     }
+    @PostMapping("/addchambreWithResAndEtud")
+    public Chambre addChambreAndResAndEtud(@RequestBody Chambre c){
+        return chambreService.affectChambreAndReservationAndEtudiant(c) ;
+    }
+
 
 }

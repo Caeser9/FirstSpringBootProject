@@ -16,4 +16,5 @@ public interface IChambreService {
         List<Chambre> findNomUniversite(String nomUniversite);
         List<Chambre> findByBlocIdBlocAndTypeChambre(long idBloc, ChamberType typeChambre);
         List<Chambre> findByBlocIdBlocAndTypeChambre2(long idBloc, ChamberType typeChambre);
+        public Chambre affectChambreAndReservationAndEtudiant(Chambre c);
 }

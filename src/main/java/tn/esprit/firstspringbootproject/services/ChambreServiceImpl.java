@@ -69,4 +69,9 @@ public class ChambreServiceImpl implements IChambreService{
     public List<Chambre> findByBlocIdBlocAndTypeChambre2(long idBloc, ChamberType typeChambre) {
         return iChambreRepository.findChambreByBlocIdBlocAndTypeC(idBloc, typeChambre);
     }
+
+    @Override
+    public Chambre affectChambreAndReservationAndEtudiant(Chambre c) {
+        return iChambreRepository.save(c);
+    }
 }
