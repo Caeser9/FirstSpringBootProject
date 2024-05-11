@@ -51,24 +51,22 @@ public class UniversiteServiceImpl implements IUniversity{
 //        foyer.setUniversite(universite);
 //        return foyer;
 //    }
-@Override
-public Foyer affectFoyerUniversite(long idFoyer, long idUniversite) {
-    Foyer foyer = FoyerRepo.findById(idFoyer).get();
-    Universite universite = UniversiteRepo.findById(idUniversite).get();
-    foyer.setUniversite(universite);
-    return foyer;
-}
+    @Override
+    public Foyer affectFoyerUniversite(long idFoyer, long idUniversite) {
+        Foyer foyer = FoyerRepo.findById(idFoyer).get();
+        Universite universite = UniversiteRepo.findById(idUniversite).get();
+        foyer.setUniversite(universite);
+        return foyer;
+    }
     @Transactional
     @Override
     public Foyer ajouterFoyerEtAffecterAUniversite(Foyer foyer, long idUniversite) {
         Universite universite = UniversiteRepo.findById(idUniversite).get();
 
         foyer.setUniversite(universite);
-        // Save the Foyer entity to the database if it's not already persisted
         return FoyerRepo.save(foyer);
     }
 
-
-
+    
 
 }

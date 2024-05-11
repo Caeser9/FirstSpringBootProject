@@ -15,4 +15,5 @@ public interface IReservationRepository extends JpaRepository<Reservation, Long>
     Reservation findForReservation(@Param("idBloc") long idBloc);
     @Query("select r from Reservation r join Chambre c on r member of c.reservations where c.bloc.foyer.universite.nomUniversite=:nomUniversite and year(r.anneeUniversitaire)=:anneeUniversitaire")
     List<Reservation> findByAnneeUniversitaire_YearAndNomUnuiversite(@Param("anneeUniversitaire") int anneeUniversitaire,@Param("nomUniversite") String nomUniversite);
+
 }
